@@ -1,4 +1,4 @@
-package javabasecource.exceptions;
+package javabasecource.exceptions.stacktrace;
 
 /**
  * Created by andrew on 15.01.17.
