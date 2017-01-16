@@ -16,25 +16,23 @@ public class RobotConnectionImpl implements RobotConnection {
     @Override
     public void moveRobotTo(int x, int y) throws RobotConnectionException {
         int random = ThreadLocalRandom.current().nextInt(1, 3);
-        if (random % 2 == 0){
-            System.out.println("Robot move from: [" + robot.getX() + ";" + robot.getY() + "] to "
-                    + "[" + x + ";" + y + "]");
-            robot.setX(x);
-            robot.setY(y);
-            return;
+        if (random % 2 == 0) {
+            throw new RobotConnectionException("The connection suddenly interrupted...");
         }
-        throw new RobotConnectionException("The connection suddenly interrupted...");
+        System.out.println("Robot move from: [" + robot.getX() + ";" + robot.getY() + "] to "
+                + "[" + x + ";" + y + "]");
+        robot.setX(x);
+        robot.setY(y);
     }
 
     @Override
     public void close() throws RobotConnectionException {
         int random = ThreadLocalRandom.current().nextInt(1, 3);
-        if (random % 2 == 0){
-            System.out.println("Trying to close the connection... Random: " + random);
-            robot = null;
-            return;
+        if (random % 2 == 0) {
+            throw new RobotConnectionException("Connection can not be closed...");
         }
-        throw new RobotConnectionException("Connection can not be closed...");
+        System.out.println("Trying to close the connection... Random: " + random);
+        robot = null;
     }
 
 }

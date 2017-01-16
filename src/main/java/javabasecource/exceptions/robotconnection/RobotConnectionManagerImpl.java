@@ -10,11 +10,11 @@ public class RobotConnectionManagerImpl implements RobotConnectionManager {
     public RobotConnection getConnection() throws RobotConnectionException {
         int random = ThreadLocalRandom.current().nextInt(1, 21);
         if (random % 2 == 0) {
-            System.out.println("Trying to establish connection...");
-            System.out.println("Random = " + random);
-            System.out.println("Connection successfully establish...");
-            return new RobotConnectionImpl(new Robot(0, 0));
+            throw new RobotConnectionException("The connection can not be established.");
         }
-        throw new RobotConnectionException("The connection can not be established.");
+        System.out.println("Trying to establish connection...");
+        System.out.println("Random = " + random);
+        System.out.println("Connection successfully establish...");
+        return new RobotConnectionImpl(new Robot(0, 0));
     }
 }
